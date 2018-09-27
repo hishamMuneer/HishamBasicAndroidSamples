@@ -9,19 +9,21 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".NavActivity">
-
-        </activity>
+        <activity android:name=".NavActivity"></activity>
         <activity
             android:name=".handler.HandlerActivity"
             android:label="@string/title_activity_handler"
             android:theme="@style/AppTheme.NoActionBar">
+
+        </activity>
+        <activity android:name=".service_bound.BoundedActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+        <service android:name=".service_bound.MyLocalService"/>
     </application>
 
 </manifest>
