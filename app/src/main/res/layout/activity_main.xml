@@ -12,4 +12,23 @@
         android:layout_height="wrap_content"
         android:text="Get Number"
          />
+
+    <Button
+        android:id="@+id/btn_date2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Get Number from 2"
+        />
+
+    <Button
+        android:id="@+id/btn_Stop1"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Stop Service 1"
+        /><Button
+        android:id="@+id/btn_Stop2"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="Stop Service 2"
+        />
 </LinearLayout>
