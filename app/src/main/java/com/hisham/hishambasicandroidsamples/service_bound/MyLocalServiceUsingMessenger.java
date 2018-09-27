@@ -3,35 +3,60 @@ package com.hisham.hishambasicandroidsamples.service_bound;
 import android.app.Service;
 import android.content.Intent;
 import android.os.Binder;
+import android.os.Bundle;
 import android.os.Handler;
 import android.os.IBinder;
 import android.os.Looper;
 import android.os.Message;
+import android.os.Messenger;
+import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
-import java.util.Calendar;
-import java.util.Date;
 import java.util.Random;
 
-public class MyLocalService extends Service {
+public class MyLocalServiceUsingMessenger extends Service {
 
-    private final IBinder iBinder = new LocalBinder();
     private static final String TAG = "HishamSample";
+    private final Messenger messenger = new Messenger(new IncomingHandler());
+    public static final int TO_UPPER_CASE = 1;
+    public static final int TO_UPPER_CASE_RESPONSE = 2;
 
-    public class LocalBinder extends Binder {
-        MyLocalService getService(){
-            printThreadInfo("LocalBinider");
-            Log.d(TAG, "getService: called");
-            return MyLocalService.this;
+    public class IncomingHandler extends Handler {
+        @Override
+        public void handleMessage(Message msg) {
+            super.handleMessage(msg);
+            // This is the action
+            int msgType = msg.what;
+            switch(msgType) {
+                case TO_UPPER_CASE: {
+                    try {
+                        // Incoming data
+                        String data = msg.getData().getString("data");
+                        Message resp = Message.obtain(null, TO_UPPER_CASE_RESPONSE);
+                        Bundle bundle = new Bundle();
+                        bundle.putString("respData", data.toUpperCase());
+                        resp.setData(bundle);
+
+                        msg.replyTo.send(resp);
+                    }
+                    catch (RemoteException e) {
+                        e.printStackTrace();
+                    }
+                    break;
+                }
+                default:
+                    super.handleMessage(msg);
+            }
         }
     }
+
 
     @Nullable
     @Override
     public IBinder onBind(Intent intent) {
         printThreadInfo("onBind");
-        return iBinder;
+        return messenger.getBinder();
     }
 
     @Override
