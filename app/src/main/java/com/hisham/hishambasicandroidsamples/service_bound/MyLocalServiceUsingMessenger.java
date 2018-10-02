@@ -13,19 +13,36 @@ import android.os.RemoteException;
 import android.support.annotation.Nullable;
 import android.util.Log;
 
+import com.hisham.hishambasicandroidsamples.util.Utils;
+
 import java.util.Random;
+
+import static com.hisham.hishambasicandroidsamples.util.Utils.printThreadInfo;
 
 public class MyLocalServiceUsingMessenger extends Service {
 
     private static final String TAG = "HishamSample";
-    private final Messenger messenger = new Messenger(new IncomingHandler());
+    private Messenger messenger;
     public static final int TO_UPPER_CASE = 1;
     public static final int TO_UPPER_CASE_RESPONSE = 2;
+    private Message initialMsg;
 
-    public class IncomingHandler extends Handler {
+    @Override
+    public void onCreate() {
+        super.onCreate();
+         messenger = new Messenger(incomingHandler);
+    }
+
+    public Handler incomingHandler = new Handler() {
         @Override
         public void handleMessage(Message msg) {
             super.handleMessage(msg);
+            getNumber(msg);
+
+        }
+
+    };
+        private void replyBack(Message msg) {
             // This is the action
             int msgType = msg.what;
             switch(msgType) {
@@ -45,11 +62,10 @@ public class MyLocalServiceUsingMessenger extends Service {
                     }
                     break;
                 }
-                default:
-                    super.handleMessage(msg);
+//                default:
+//                    super.handleMessage(msg);
             }
         }
-    }
 
 
     @Nullable
@@ -64,11 +80,7 @@ public class MyLocalServiceUsingMessenger extends Service {
         return super.onUnbind(intent);
     }
 
-    private void printThreadInfo(String caller) {
-        long threadId = Thread.currentThread().getId();
-        String threadName = Thread.currentThread().getName();
-        Log.d(TAG, "Caller: " + caller + " - Thread info: " + threadId + " - " + threadName );
-    }
+
 
     private Handler handler = new Handler(Looper.myLooper()) {
         @Override
@@ -76,6 +88,7 @@ public class MyLocalServiceUsingMessenger extends Service {
             super.handleMessage(msg);
             printThreadInfo("handleMessage");
             Log.d(TAG, "handleMessage: msg" + msg);
+           replyBack(msg);
         }
     };
 
@@ -83,7 +96,7 @@ public class MyLocalServiceUsingMessenger extends Service {
         printThreadInfo("getNumber");
         // time consuming task
         try {
-            Thread.sleep(6000);
+            Thread.sleep(2000);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
@@ -91,13 +104,14 @@ public class MyLocalServiceUsingMessenger extends Service {
         int i = new Random().nextInt();
         Log.d(TAG, "getNumber: " + i);
 
-        Message msg = Message.obtain();
-        msg.obj = i;
-        handler.sendMessage(msg);
+//        replyBack(initialMsg);
+
+        handler.sendMessage(initialMsg);
 
     };
 
-    public void getNumber(){
+    public void getNumber(Message msg){
+        initialMsg = Message.obtain(msg);
         WorkerThread thread = new WorkerThread();
         thread.addTask(runnable);
     }

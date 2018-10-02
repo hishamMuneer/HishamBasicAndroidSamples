@@ -5,6 +5,8 @@ import android.os.HandlerThread;
 import android.os.Looper;
 import android.util.Log;
 
+import static com.hisham.hishambasicandroidsamples.util.Utils.printThreadInfo;
+
 public class WorkerThread extends HandlerThread {
     private static final String TAG = "HishamSample";
     private Handler handler;
@@ -20,10 +22,6 @@ public class WorkerThread extends HandlerThread {
         handler.post(r);
     }
 
-    private void printThreadInfo(String caller) {
-        long threadId = Thread.currentThread().getId();
-        String threadName = Thread.currentThread().getName();
-        Log.d(TAG, "Caller: " + caller + " - Thread info: " + threadId + " - " + threadName );
-    }
+
 
 }

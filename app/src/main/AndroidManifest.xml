@@ -25,8 +25,11 @@
         </activity>
         <activity android:name=".service_bound.BoundedMessengerActivity">
         </activity>
+        <activity android:name=".service_bound.BoundedAIDLActivity" />
+
         <service android:name=".service_bound.MyLocalServiceUsingBinder"/>
         <service android:name=".service_bound.MyLocalServiceUsingMessenger" android:process=":convertprc"/>
+        <service android:name=".service_bound.MyLocalServiceUsingAIDL" android:exported="true" />
     </application>
 
 </manifest>

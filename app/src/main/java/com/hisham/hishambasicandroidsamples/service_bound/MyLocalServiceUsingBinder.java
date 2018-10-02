@@ -12,6 +12,8 @@ import android.util.Log;
 
 import java.util.Random;
 
+import static com.hisham.hishambasicandroidsamples.util.Utils.printThreadInfo;
+
 public class MyLocalServiceUsingBinder extends Service {
 
     private final IBinder iBinder = new LocalBinder();
@@ -37,11 +39,7 @@ public class MyLocalServiceUsingBinder extends Service {
         return super.onUnbind(intent);
     }
 
-    private void printThreadInfo(String caller) {
-        long threadId = Thread.currentThread().getId();
-        String threadName = Thread.currentThread().getName();
-        Log.d(TAG, "Caller: " + caller + " - Thread info: " + threadId + " - " + threadName );
-    }
+
 
 
 

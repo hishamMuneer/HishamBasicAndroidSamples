@@ -18,6 +18,8 @@ import android.widget.TextView;
 
 import com.hisham.hishambasicandroidsamples.R;
 
+import static com.hisham.hishambasicandroidsamples.util.Utils.printThreadInfo;
+
 public class BoundedMessengerActivity extends AppCompatActivity {
     private static final String TAG = "HishamSample";
     private ServiceConnection mConn = new ServiceConnection() {
@@ -86,12 +88,6 @@ public class BoundedMessengerActivity extends AppCompatActivity {
             //btn_date.setText("" + messenger.getNumber());
 //            Toast.makeText(BoundedBinderActivity.this,mService.getNumber()+"",Toast.LENGTH_LONG).show();
         });
-    }
-
-    private void printThreadInfo(String caller) {
-        long threadId = Thread.currentThread().getId();
-        String threadName = Thread.currentThread().getName();
-        Log.d(TAG, "Caller: " + caller + " - Thread info: " + threadId + " - " + threadName);
     }
 
 

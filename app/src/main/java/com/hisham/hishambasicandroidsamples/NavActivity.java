@@ -12,6 +12,7 @@ import android.view.ViewGroup;
 import android.widget.TextView;
 
 import com.hisham.hishambasicandroidsamples.handler.HandlerActivity;
+import com.hisham.hishambasicandroidsamples.service_bound.BoundedAIDLActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedBinderActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedMessengerActivity;
 
@@ -20,7 +21,8 @@ public class NavActivity extends AppCompatActivity {
     private Class[] activities = new Class[]{
             HandlerActivity.class,
             BoundedBinderActivity.class,
-            BoundedMessengerActivity.class
+            BoundedMessengerActivity.class,
+            BoundedAIDLActivity.class,
     };
 
     @Override

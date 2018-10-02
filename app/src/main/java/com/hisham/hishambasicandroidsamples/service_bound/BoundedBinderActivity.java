@@ -12,6 +12,8 @@ import android.widget.Button;
 
 import com.hisham.hishambasicandroidsamples.R;
 
+import static com.hisham.hishambasicandroidsamples.util.Utils.printThreadInfo;
+
 public class BoundedBinderActivity extends AppCompatActivity {
     private static final String TAG = "HishamSample";
     private Button btn_date;
@@ -97,11 +99,7 @@ public class BoundedBinderActivity extends AppCompatActivity {
 
     }
 
-    private void printThreadInfo(String caller) {
-        long threadId = Thread.currentThread().getId();
-        String threadName = Thread.currentThread().getName();
-        Log.d(TAG, "Caller: " + caller + " - Thread info: " + threadId + " - " + threadName );
-    }
+
 
 
 }
