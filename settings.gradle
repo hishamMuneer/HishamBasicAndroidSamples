@@ -1,1 +1,1 @@
-include ':app', ':hishamclient'
+include ':app', ':hishamclient', ':JavaLibrary'
