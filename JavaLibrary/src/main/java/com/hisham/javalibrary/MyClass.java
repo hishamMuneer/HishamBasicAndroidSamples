@@ -1,5 +1,8 @@
 package com.hisham.javalibrary;
 
+import java.net.Inet6Address;
+import java.net.InetAddress;
+import java.net.UnknownHostException;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 
@@ -21,16 +24,27 @@ public class MyClass {
 
         // ========== Executors
 
-        ExecutorService executor = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 10; i++) {
-            Runnable worker = new WorkerThread("" + i);
-            executor.execute(worker);//calling execute method of ExecutorService
+//        ExecutorService executor = Executors.newFixedThreadPool(5);
+//        for (int i = 0; i < 10; i++) {
+//            Runnable worker = new WorkerThread("" + i);
+//            executor.execute(worker);//calling execute method of ExecutorService
+//        }
+//        executor.shutdown();
+//        while (!executor.isTerminated()) {   }
+//
+//        System.out.println("Finished all threads");
+
+        // ============ Deadlock
+
+        DeadlockExample.test();
+
+        // ============== InetAddress
+
+        try {
+            System.out.print(InetAddress.getByName("www.google.com").getHostAddress());
+        } catch (UnknownHostException e) {
+            e.printStackTrace();
         }
-        executor.shutdown();
-        while (!executor.isTerminated()) {   }
-
-        System.out.println("Finished all threads");
-
     }
 
 }

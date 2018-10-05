@@ -16,6 +16,9 @@ import com.hisham.hishambasicandroidsamples.service_bound.BoundedAIDLActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedBinderActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedMessengerActivity;
 
+import java.net.Inet6Address;
+import java.net.InetAddress;
+
 public class NavActivity extends AppCompatActivity {
 
     private Class[] activities = new Class[]{
@@ -29,7 +32,6 @@ public class NavActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_nav);
-
         RecyclerView mRecyclerView = findViewById(R.id.rV);
         // use this setting to improve performance if you know that changes
         // in content do not change the layout size of the RecyclerView
