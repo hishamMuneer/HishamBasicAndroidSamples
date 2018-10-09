@@ -1,4 +1,10 @@
 <resources>
     <string name="app_name">HishamBasicAndroidSamples</string>
     <string name="title_activity_handler">HandlerActivity</string>
+    <string name="title_activity_cursor_loader">CursorLoader</string>
+    <string name="action_settings">Settings</string>
+    <string name="appwidget_text">EXAMPLE</string>
+    <string name="configure">Configure</string>
+    <string name="add_widget">Add widget</string>
+    <string name="date_count_format">%1$d @%2$s</string>
 </resources>

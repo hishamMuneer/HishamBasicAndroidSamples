@@ -1,0 +1,88 @@
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    android:background="#09C"
+    android:padding="@dimen/widget_margin">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#09C">
+
+        <TextView
+            android:id="@+id/appwidget_text"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:background="@color/white"
+            android:contentDescription="@string/appwidget_text"
+            android:text="@string/appwidget_text"
+            android:textColor="@color/widget_text_color"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/appwidget_id"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:background="@color/white"
+            android:contentDescription="@string/appwidget_text"
+            android:text="@string/appwidget_text"
+            android:textColor="@color/widget_text_color"
+            android:textSize="14sp"
+             />
+
+    </LinearLayout>
+    <LinearLayout
+        android:id="@+id/section_update"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:background="#09C">
+
+        <TextView
+            android:id="@+id/appwidget_update_label"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:background="@color/white"
+            android:contentDescription="@string/appwidget_text"
+            android:text="Last Updated"
+            android:textColor="@color/widget_text_color"
+            android:textSize="16sp"
+            android:padding="8dp"
+            android:textStyle="bold|italic" />
+
+        <TextView
+            android:id="@+id/appwidget_update"
+            android:padding="8dp"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_centerHorizontal="true"
+            android:layout_centerVertical="true"
+            android:layout_margin="8dp"
+            android:background="@color/white"
+            android:contentDescription="@string/appwidget_text"
+            android:text="@string/date_count_format"
+            android:textColor="@color/widget_text_color"
+            android:textSize="14sp"
+            />
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/button_update"
+        android:text="Update Now"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
