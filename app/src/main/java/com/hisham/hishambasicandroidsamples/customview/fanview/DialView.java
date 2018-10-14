@@ -86,7 +86,14 @@ public class DialView extends View {
         }
     }
 
-    private float[] computeXYForPositionCustomIndicators(final int position, final float radius) {
+    /**
+     *
+     * @param position current position being drawn
+     * @param radius radius
+     * @param isLabel Tells if text is being drawn.
+     * @return xy positions
+     */
+    private float[] computeXYForPositionCustomIndicators(final int position, final float radius, boolean isLabel) {
         if(indicatorsCount <= 6){
             return computeXYForPosition(position, radius);
         }
@@ -95,8 +102,8 @@ public class DialView extends View {
         Double angle = startAngle + (position * (Math.PI / indicatorsCount));
         result[0] = (float) (radius * Math.cos(angle * 2)) + (width / 2);
         result[1] = (float) (radius * Math.sin(angle * 2)) + (height / 2);
-        if ((angle > Math.toRadians(360))) {
-            result[1] += 40;
+        if ((angle > Math.toRadians(360)) && isLabel) {
+            result[1] += 20; // as text will be now drawn below the circle, so adding padding
         }
         return result;
     }
@@ -125,7 +132,7 @@ public class DialView extends View {
         final float labelRadius = radiusCircle + 20;
         StringBuffer label = tempLabel;
         for(int i = 0; i < indicatorsCount; i++){
-            float[] xyData = computeXYForPositionCustomIndicators(i, labelRadius);
+            float[] xyData = computeXYForPositionCustomIndicators(i, labelRadius, true);
             float x = xyData[0];
             float y = xyData[1];
             label.setLength(0);
@@ -134,7 +141,7 @@ public class DialView extends View {
         }
         // draw indicator
         final float indicatorRadius = radiusCircle - 35;
-        float[] xyData = computeXYForPositionCustomIndicators(activeSelection, indicatorRadius);
+        float[] xyData = computeXYForPositionCustomIndicators(activeSelection, indicatorRadius, false);
         canvas.drawCircle(xyData[0], xyData[1], 20, textPaint);
 
 
