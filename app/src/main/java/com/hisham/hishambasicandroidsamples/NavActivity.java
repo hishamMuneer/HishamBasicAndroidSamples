@@ -1,6 +1,5 @@
 package com.hisham.hishambasicandroidsamples;
 
-import android.arch.lifecycle.LiveData;
 import android.arch.lifecycle.MutableLiveData;
 import android.arch.lifecycle.Observer;
 import android.content.Intent;
@@ -10,24 +9,18 @@ import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.util.SparseArray;
-import android.util.SparseIntArray;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hisham.hishambasicandroidsamples.customview.simple_doodle.DoodleViewActivity;
 import com.hisham.hishambasicandroidsamples.handler.HandlerActivity;
 import com.hisham.hishambasicandroidsamples.loaderz.CursorLoaderActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedAIDLActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedBinderActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedMessengerActivity;
 
-import java.net.Inet6Address;
-import java.net.InetAddress;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
 import java.util.Random;
 
 public class NavActivity extends AppCompatActivity {
@@ -38,6 +31,7 @@ public class NavActivity extends AppCompatActivity {
             BoundedMessengerActivity.class,
             BoundedAIDLActivity.class,
             CursorLoaderActivity.class,
+            DoodleViewActivity.class
     };
 
           MutableLiveData<Object> data = new MutableLiveData<>();
