@@ -8,4 +8,5 @@
     <string name="add_widget">Add widget</string>
     <string name="date_count_format">%1$d @%2$s</string>
     <string name="title_activity_doodle_view">DoodleViewActivity</string>
+    <string name="fan_control">Fan Control</string>
 </resources>

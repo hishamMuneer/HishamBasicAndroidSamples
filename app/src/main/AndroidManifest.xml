@@ -58,7 +58,8 @@
         <activity
             android:name=".customview.simple_doodle.DoodleViewActivity"
             android:label="@string/title_activity_doodle_view"
-            android:theme="@style/AppTheme.NoActionBar"></activity>
+            android:theme="@style/AppTheme.NoActionBar" />
+        <activity android:name=".customview.fanview.FanActivity"></activity>
     </application>
 
 </manifest>

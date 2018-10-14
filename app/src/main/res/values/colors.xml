@@ -5,4 +5,5 @@
     <color name="colorAccent">#FF4081</color>
     <color name="white">#FFF</color>
     <color name="widget_text_color">#262626</color>
+    <color name="fan_off_color">@android:color/darker_gray</color>
 </resources>

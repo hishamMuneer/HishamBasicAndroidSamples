@@ -14,6 +14,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
 
+import com.hisham.hishambasicandroidsamples.customview.fanview.FanActivity;
 import com.hisham.hishambasicandroidsamples.customview.simple_doodle.DoodleViewActivity;
 import com.hisham.hishambasicandroidsamples.handler.HandlerActivity;
 import com.hisham.hishambasicandroidsamples.loaderz.CursorLoaderActivity;
@@ -31,7 +32,8 @@ public class NavActivity extends AppCompatActivity {
             BoundedMessengerActivity.class,
             BoundedAIDLActivity.class,
             CursorLoaderActivity.class,
-            DoodleViewActivity.class
+            DoodleViewActivity.class,
+            FanActivity.class
     };
 
           MutableLiveData<Object> data = new MutableLiveData<>();
