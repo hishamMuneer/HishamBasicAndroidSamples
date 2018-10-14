@@ -2,10 +2,6 @@ apply plugin: 'com.android.library'
 apply plugin: 'com.github.dcendents.android-maven'
 
 group='com.github.hishamMuneer'
-version='v1.5'
-ext {
-    releaseArtifact = 'exoplayer-core'
-}
 
 android {
     compileSdkVersion 28
