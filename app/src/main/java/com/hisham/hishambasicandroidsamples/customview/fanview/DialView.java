@@ -17,7 +17,8 @@ import com.hisham.hishambasicandroidsamples.R;
  */
 public class DialView extends View {
 
-    private static int SELECTION_COUNT = 4; // total selecitons
+    private static final int SELECTION_COUNT = 4; // total default selections
+    private int indicatorsCount; // indicators provided by user customized
     private float width;
     private float height;
     private Paint textPaint;
@@ -56,6 +57,7 @@ public class DialView extends View {
             fanOnColor = typedArray.getColor(R.styleable.DialView_fan_on_color, fanOnColor);
             fanOffColor = typedArray.getColor(R.styleable.DialView_fan_off_color, fanOffColor);
             activeSelection = Math.abs(typedArray.getInt(R.styleable.DialView_default_position_of_fan_indicator, 0) % SELECTION_COUNT);
+            indicatorsCount = typedArray.getInt(R.styleable.DialView_indicators_count, SELECTION_COUNT);
             typedArray.recycle();
         }
 
@@ -69,7 +71,7 @@ public class DialView extends View {
         setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                activeSelection = (activeSelection + 1) % SELECTION_COUNT;
+                activeSelection = (activeSelection + 1) % indicatorsCount;
                 setDialPaintColor(activeSelection);
                 invalidate();
             }
@@ -84,6 +86,20 @@ public class DialView extends View {
         }
     }
 
+    private float[] computeXYForPositionCustomIndicators(final int position, final float radius) {
+        if(indicatorsCount <= 6){
+            return computeXYForPosition(position, radius);
+        }
+        float[] result = tempResult;
+        Double startAngle = Math.PI * (3 / 2d);
+        Double angle = startAngle + (position * (Math.PI / indicatorsCount));
+        result[0] = (float) (radius * Math.cos(angle * 2)) + (width / 2);
+        result[1] = (float) (radius * Math.sin(angle * 2)) + (height / 2);
+        if ((angle > Math.toRadians(360))) {
+            result[1] += 40;
+        }
+        return result;
+    }
     private float[] computeXYForPosition(final int position, final float radius){
         float[] result = tempResult;
         Double startAngle = Math.PI * (9/8d);
@@ -108,8 +124,8 @@ public class DialView extends View {
         // draw text labels
         final float labelRadius = radiusCircle + 20;
         StringBuffer label = tempLabel;
-        for(int i = 0; i < SELECTION_COUNT; i++){
-            float[] xyData = computeXYForPosition(i, labelRadius);
+        for(int i = 0; i < indicatorsCount; i++){
+            float[] xyData = computeXYForPositionCustomIndicators(i, labelRadius);
             float x = xyData[0];
             float y = xyData[1];
             label.setLength(0);
@@ -118,7 +134,7 @@ public class DialView extends View {
         }
         // draw indicator
         final float indicatorRadius = radiusCircle - 35;
-        float[] xyData = computeXYForPosition(activeSelection, indicatorRadius);
+        float[] xyData = computeXYForPositionCustomIndicators(activeSelection, indicatorRadius);
         canvas.drawCircle(xyData[0], xyData[1], 20, textPaint);
 
 
@@ -146,5 +162,17 @@ public class DialView extends View {
         return this;
     }
 
+    public int getIndicatorsCount() {
+        return indicatorsCount;
+    }
 
+    public DialView setIndicatorsCount(int indicatorsCount) {
+//        if(indicatorsCount > 20){
+//            this.indicatorsCount = 20;
+//        } else {
+            this.indicatorsCount = indicatorsCount;
+//        }
+        invalidate();
+        return this;
+    }
 }

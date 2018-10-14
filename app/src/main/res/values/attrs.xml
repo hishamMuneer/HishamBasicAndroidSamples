@@ -4,5 +4,6 @@
         <attr name="fan_off_color" format="reference|color" />
         <attr name="fan_on_color" format="reference|color" />
         <attr name="default_position_of_fan_indicator" format="integer" />
+        <attr name="indicators_count" format="integer" />
     </declare-styleable>
 </resources>

@@ -27,6 +27,7 @@
         android:layout_marginTop="8dp"
         app:fan_off_color="@color/fan_off_color"
         app:fan_on_color="@color/colorPrimary"
+        app:indicators_count="10"
         app:default_position_of_fan_indicator="0"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"

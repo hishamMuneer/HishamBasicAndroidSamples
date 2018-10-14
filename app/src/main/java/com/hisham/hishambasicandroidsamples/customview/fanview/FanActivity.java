@@ -17,6 +17,7 @@ public class FanActivity extends AppCompatActivity {
         DialView dialView = findViewById(R.id.dialView);
         dialView.setFanOffColor(Color.CYAN);
         dialView.setFanOnColor(Color.RED);
+        dialView.setIndicatorsCount(4);
 //        dialView.setOnClickListener(new View.OnClickListener() {
 //            @Override
 //            public void onClick(View v) {
