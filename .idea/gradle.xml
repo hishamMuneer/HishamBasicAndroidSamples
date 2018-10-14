@@ -11,6 +11,7 @@
             <option value="$PROJECT_DIR$/JavaLibrary" />
             <option value="$PROJECT_DIR$/app" />
             <option value="$PROJECT_DIR$/hishamclient" />
+            <option value="$PROJECT_DIR$/passwordedittext" />
           </set>
         </option>
         <option name="resolveModulePerSourceSet" value="false" />
