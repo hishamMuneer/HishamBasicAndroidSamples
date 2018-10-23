@@ -1,4 +1,4 @@
-package com.hisham.javalibrary;
+package com.hisham.javalibrary.threading;
 
 /**
  * Created by Hisham on 04/Oct/2018 - 09:54

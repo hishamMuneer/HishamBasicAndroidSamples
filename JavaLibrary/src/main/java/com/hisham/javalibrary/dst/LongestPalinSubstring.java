@@ -1,4 +1,4 @@
-package com.hisham.javalibrary;
+package com.hisham.javalibrary.dst;
 
 
 // Java Solution
@@ -12,7 +12,7 @@ public class LongestPalinSubstring
     // This function prints the longest palindrome substring
     // of str[].
     // It also returns the length of the longest palindrome
-    static int longestPalSubstr(String str) {
+    public static int longestPalSubstr(String str) {
         int n = str.length();   // get length of input string
 
         // table[i][j] will be false if substring str[i..j]

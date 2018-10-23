@@ -1,4 +1,6 @@
-package com.hisham.javalibrary;
+package com.hisham.javalibrary.threading;
+
+import com.hisham.javalibrary.MyClass;
 
 /**
  * Created by Hisham on 04/Oct/2018 - 09:34
@@ -8,7 +10,7 @@ public class ThreadSample extends Thread {
     private MyClass myClass;
     private ThreadSample sample2;
 
-    ThreadSample(String name){
+    public ThreadSample(String name){
         setName(name);
     }
 

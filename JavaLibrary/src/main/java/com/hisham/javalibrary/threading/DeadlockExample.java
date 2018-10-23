@@ -1,4 +1,4 @@
-package com.hisham.javalibrary;
+package com.hisham.javalibrary.threading;
 
 import java.net.Inet6Address;
 
