@@ -19,6 +19,7 @@ import com.hisham.hishambasicandroidsamples.customview.fanview.FanActivity;
 import com.hisham.hishambasicandroidsamples.customview.simple_doodle.DoodleViewActivity;
 import com.hisham.hishambasicandroidsamples.handler.HandlerActivity;
 import com.hisham.hishambasicandroidsamples.loaderz.CursorLoaderActivity;
+import com.hisham.hishambasicandroidsamples.longwalks.LongWalksActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedAIDLActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedBinderActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedMessengerActivity;
@@ -35,7 +36,8 @@ public class NavActivity extends AppCompatActivity {
             CursorLoaderActivity.class,
             DoodleViewActivity.class,
             FanActivity.class,
-            ClearEditTextActivity.class
+            ClearEditTextActivity.class,
+            LongWalksActivity.class
     };
 
           MutableLiveData<Object> data = new MutableLiveData<>();

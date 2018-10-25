@@ -18,11 +18,25 @@ public class ProducerConsumerMain {
 
     public static void main(String args[]) {
         new ProducerConsumerMain().pc();
+//        while (true){
+//            System.out.println("Active threads: " + Thread.activeCount());
+//        }
     }
 
-    //    private static final class Lock { }
-    private final Lock lock = new ReentrantLock();
-//    private final Object lockCons = new Lock();
+        private static final class Lock {
+            private volatile String lockedBy = "tt";
+
+            public synchronized String getLockedBy() {
+                return lockedBy;
+            }
+
+            public synchronized Lock setLockedBy(String lockedBy) {
+                this.lockedBy = lockedBy;
+                return this;
+            }
+        }
+//    private final Lock lock = new ReentrantLock();
+    private final Lock lock = new Lock();
 
 
     private void pc() {
@@ -30,19 +44,23 @@ public class ProducerConsumerMain {
             @Override
             public void produce() throws InterruptedException {
 
-//                synchronized (lock) {
-                if (lock.tryLock()) {
-                    try {
+                synchronized (lock) {
+//                if (lock.tryLock()) {
+//                    try {
                         printThreadInfo(Thread.currentThread());
-                        if (itemQueue.size() < limit) {
-                            Item item = new Item(producerId++);
-                            itemQueue.add(item);
-                            System.out.println("Item produced: " + producerId + " - Q Size: " + itemQueue.size());
+                        while (itemQueue.size() >= limit || lock.getLockedBy().equalsIgnoreCase("producer")) {
+                            System.out.println(Thread.currentThread().getName() + " waiting.");
+                            lock.setLockedBy("producer").wait();
                         }
-//                        lock.notifyAll();
-                    } finally {
-                        lock.unlock();
-                    }
+                        lock.setLockedBy("none");
+                    System.out.println(Thread.currentThread().getName() + " started execution.");
+                        Item item = new Item(producerId++);
+                        itemQueue.add(item);
+                        System.out.println("Item produced: " + producerId + " - Q Size: " + itemQueue.size());
+                        lock.notifyAll();
+//                    } finally {
+//                        lock.unlock();
+//                    }
                 }
             }
         };
@@ -50,23 +68,25 @@ public class ProducerConsumerMain {
             @Override
             public void consume() throws InterruptedException {
 
-//                synchronized (lock) {
-                if (lock.tryLock()) {
-                    try {
+                synchronized (lock) {
+//                if (lock.tryLock()) {
+//                    try {
                         printThreadInfo(Thread.currentThread());
-                        if (itemQueue.size() > 0) {
-
+                        while (itemQueue.size() <= 0 || lock.getLockedBy().equalsIgnoreCase("consumer")) {
+                            System.out.println(Thread.currentThread().getName() + " waiting.");
+                            lock.setLockedBy("consumer").wait();
+                        }
+                    lock.setLockedBy("none");
+                    System.out.println(Thread.currentThread().getName() + " started execution.");
                             Item poll = itemQueue.poll();
-
-//                        lock.notifyAll();
+                            lock.notifyAll();
                             if (poll != null)
                                 System.out.println("Item consumed: " + poll.getId() + " Q Size: " + itemQueue.size());
                             else
                                 System.out.println("Item is " + poll);
-                        }
-                    } finally {
-                        lock.unlock();
-                    }
+//                    } finally {
+//                        lock.unlock();
+//                    }
                 }
             }
         };
@@ -76,7 +96,7 @@ public class ProducerConsumerMain {
             public void run() {
                 while (true) {
                     try {
-                        sleep(100);
+//                        sleep();
                         consumer.consume();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -89,7 +109,7 @@ public class ProducerConsumerMain {
             public void run() {
                 while (true) {
                     try {
-                        sleep(100);
+//                        sleep(100);
                         consumer.consume();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -97,19 +117,19 @@ public class ProducerConsumerMain {
                 }
             }
         }.start();
-        new Thread("Consumer3") {
-            @Override
-            public void run() {
-                while (true) {
-                    try {
-                        sleep(100);
-                        consumer.consume();
-                    } catch (InterruptedException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }.start();
+//        new Thread("Consumer3") {
+//            @Override
+//            public void run() {
+//                while (true) {
+//                    try {
+////                        sleep(100);
+//                        consumer.consume();
+//                    } catch (InterruptedException e) {
+//                        e.printStackTrace();
+//                    }
+//                }
+//            }
+//        }.start();
 
 
         new Thread("Producer") {
@@ -118,7 +138,7 @@ public class ProducerConsumerMain {
 
                 while (true) {
                     try {
-                        sleep(66);
+//                        sleep(100);
                         producer.produce();
                     } catch (InterruptedException e) {
                         e.printStackTrace();
@@ -132,7 +152,7 @@ public class ProducerConsumerMain {
 
                 while (true) {
                     try {
-                        sleep(57);
+//                        sleep(57);
                         producer.produce();
                     } catch (InterruptedException e) {
                         e.printStackTrace();

@@ -60,7 +60,8 @@
             android:label="@string/title_activity_doodle_view"
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".customview.fanview.FanActivity" />
-        <activity android:name=".customview.clearedittext.ClearEditTextActivity"></activity>
+        <activity android:name=".customview.clearedittext.ClearEditTextActivity" />
+        <activity android:name=".longwalks.LongWalksActivity"></activity>
     </application>
 
 </manifest>
