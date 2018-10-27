@@ -18,6 +18,7 @@ import com.hisham.hishambasicandroidsamples.customview.clearedittext.ClearEditTe
 import com.hisham.hishambasicandroidsamples.customview.fanview.FanActivity;
 import com.hisham.hishambasicandroidsamples.customview.simple_doodle.DoodleViewActivity;
 import com.hisham.hishambasicandroidsamples.handler.HandlerActivity;
+import com.hisham.hishambasicandroidsamples.job_scheduler.ReceiverInvokeActivity;
 import com.hisham.hishambasicandroidsamples.loaderz.CursorLoaderActivity;
 import com.hisham.hishambasicandroidsamples.longwalks.LongWalksActivity;
 import com.hisham.hishambasicandroidsamples.service_bound.BoundedAIDLActivity;
@@ -37,7 +38,8 @@ public class NavActivity extends AppCompatActivity {
             DoodleViewActivity.class,
             FanActivity.class,
             ClearEditTextActivity.class,
-            LongWalksActivity.class
+            LongWalksActivity.class,
+            ReceiverInvokeActivity.class
     };
 
           MutableLiveData<Object> data = new MutableLiveData<>();

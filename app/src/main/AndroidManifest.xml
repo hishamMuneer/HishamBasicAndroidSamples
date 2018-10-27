@@ -6,7 +6,7 @@
     <uses-permission android:name="android.permission.WRITE_CONTACTS" />
 
     <application
-        android:allowBackup="true"
+        android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
@@ -61,7 +61,23 @@
             android:theme="@style/AppTheme.NoActionBar" />
         <activity android:name=".customview.fanview.FanActivity" />
         <activity android:name=".customview.clearedittext.ClearEditTextActivity" />
-        <activity android:name=".longwalks.LongWalksActivity"></activity>
+        <activity android:name=".longwalks.LongWalksActivity" />
+
+        <service
+            android:name=".job_scheduler.TestJobService"
+            android:enabled="true"
+            android:exported="false"
+            android:permission="android.permission.BIND_JOB_SERVICE" />
+
+        <!--<receiver-->
+            <!--android:name=".job_scheduler.ChargingReceiver"-->
+            <!--android:enabled="true"-->
+            <!--android:exported="false" />-->
+
+        <activity
+            android:name=".job_scheduler.ReceiverInvokeActivity"
+            android:label="@string/title_activity_receiver_invoke"
+            android:theme="@style/AppTheme.NoActionBar"></activity>
     </application>
 
 </manifest>
