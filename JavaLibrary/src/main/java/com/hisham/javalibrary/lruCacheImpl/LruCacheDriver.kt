@@ -7,22 +7,26 @@ object LruCacheDriver {
 
     @JvmStatic
     fun main(args: Array<String>){
-        val myLruCache = MyLruCache(4)
-        myLruCache.get(1)
-        myLruCache.get(2)
-        myLruCache.get(3)
-        myLruCache.get(4)
-        myLruCache.get(5)
-        myLruCache.get(6)
-        myLruCache.get(7)
-        myLruCache.get(8)
-        myLruCache.get(7)
-        myLruCache.get(1)
-        myLruCache.get(9)
-        myLruCache.get(10)
-        myLruCache.remove(10)
-        myLruCache.remove(4)
-        myLruCache.remove(8)
+        val myLruCache = MyLruCacheDeque(6)
+        myLruCache.getItem(1)
+        myLruCache.getItem(2)
+        myLruCache.getItem(3)
+        myLruCache.getItem(4)
+        myLruCache.getItem(5)
+        myLruCache.getItem(1)
+        myLruCache.getItem(6)
+        myLruCache.getItem(7)
+        myLruCache.getItem(8)
+        myLruCache.getItem(7)
+        myLruCache.printCacheDetails()
+        System.out.println("Current map size: ${myLruCache.currentSizeMap()}" )
+        System.out.println("Current deque size: ${myLruCache.currentSizeDeque()}" )
+        myLruCache.getItem(1)
+        myLruCache.getItem(9)
+        myLruCache.getItem(10)
+//        myLruCache.remove(10)
+//        myLruCache.remove(4)
+//        myLruCache.remove(8)
 
 //        myLruCache.get(1)
 //        myLruCache.get(10)
@@ -33,6 +37,10 @@ object LruCacheDriver {
 //        myLruCache.get(13)
 
         myLruCache.printCacheDetails()
+        System.out.println("Current map size: ${myLruCache.currentSizeMap()}" )
+        System.out.println("Current deque size: ${myLruCache.currentSizeDeque()}" )
+        System.out.println("Hits: ${myLruCache.getHitCount()}" )
+        System.out.println("Misses: ${myLruCache.getMissCount()}" )
     }
 
 }

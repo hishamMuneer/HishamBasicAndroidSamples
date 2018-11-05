@@ -3,7 +3,7 @@ package com.hisham.javalibrary.lruCacheImpl
 import sun.misc.LRUCache
 
 /**
- * Created by Hisham on 04/Nov/2018 - 23:24
+ * Created by Hisham on 04/Nov/2018 - 23:24 - Not written correctly, broken
  */
 class MyLruCache(private val cacheSize: Int) {
     private data class MyEntry(val key: Int) {
