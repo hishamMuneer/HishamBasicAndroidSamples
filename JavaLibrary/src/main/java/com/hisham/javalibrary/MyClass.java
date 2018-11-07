@@ -3,6 +3,8 @@ package com.hisham.javalibrary;
 import com.hisham.javalibrary.dst.LongestPalinSubstring;
 import com.hisham.javalibrary.threading.ThreadSample;
 
+import kotlin.Pair;
+
 public class MyClass {
 
     private static final ThreadSample sample = new ThreadSample("Sample1");
@@ -19,7 +21,7 @@ public class MyClass {
 //        }thread
         System.out.println("Main thread execution finished");
 
-
+        Pair<Integer, Integer> integer;
     }
 
 
